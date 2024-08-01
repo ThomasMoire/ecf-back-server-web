@@ -11,33 +11,63 @@ Faite un fork de ce repository git et codez votre projet dans le dossier *app*.
 
 1. Ecrire la requête SQL qui permet de récupérer tout les produits de la carte.
 ```sql
-# Ecrivez la requête ici ...
+SELECT * FROM product;
 
 ```
 
 2. Ecrire la requête SQL qui permet d'ajouter un produit au panier de l'utilisateur.
 ```sql
-# Ecrivez la requête ici ...
+INSERT INTO cart (user_id, product_id, quantity ) VALUES ( 1, 2, 1 );
 
 ```
 
 3. Ecrire la requête SQL qui permet de valider une commande pour qu'elle parte en salle.
 ```sql
-# Ecrivez la requête ici ...
+UPDATE commandes
+SET statut = "Prête pour la salle"
+WHERE id_commande = 123;
 
 ```
 
 4. Un nouveau burger est arrivé : le DoubleBigMassi. Ecrivez la requête SQL qui permet d'ajouter ce magnifique *burger* à la carte.
 ```sql
-# Ecrivez la requête ici ...
+INSERT INTO carte ( nom, description ) VALUES (
+"Le DoubleBigMassi",
+"ce magnifique *burger"
+);
 
 ```
 
 5. Ecrire la requête SQL qui permet de récupérer tout les produits d'une commande en fonction de l'id d'un utilisateur.
 ```sql
-# Ecrivez la requête ici ...
-
+SELECT p.id_produit, p.nom, p.description, p.prix, lcquantite
+FROM utilisateurs u
+JOIN commandes c ON u.id_utilisateur = c.id_utilisateur
+JOIN ligne_commande lc ON c.id_commande = lc.id_commande
+WHERE u.id_utilisateur = 5;
 ```
+Explications des TABLES : 
+# Utilisateurs : pour stocker les informations des utilisateurs.
+- id_utilisateur (clé primaire)
+- nom
+- email
+
+# Commandes : pour stocker les commandes passées.
+- id_commande (clé primaire)
+- id_utilisateur (clé étrangère vers utilisateurs)
+- date_commande
+
+# Produits : pour stocker les informations sur les produits.
+- id_produit (clé primaire)
+- nom
+- description
+- prix
+
+# Ligne_commande : pour associer les produits aux commandes.
+- id_ligne_commande (clé primaire)
+- id_commande (clé étrangère vers commandes)
+- id_produit (clé étrangère vers produits)
+- quantite
 
 ## Partie 2 - Projet
 ### Description du projet
