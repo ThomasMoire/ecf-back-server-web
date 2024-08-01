@@ -46,24 +46,24 @@ JOIN commandes c ON u.id_utilisateur = c.id_utilisateur
 JOIN ligne_commande lc ON c.id_commande = lc.id_commande
 WHERE u.id_utilisateur = 5;
 ```
-Explications des TABLES : 
-# Utilisateurs : pour stocker les informations des utilisateurs.
+# Explications des TABLES : 
+Utilisateurs : pour stocker les informations des utilisateurs.
 - id_utilisateur (clé primaire)
 - nom
 - email
 
-# Commandes : pour stocker les commandes passées.
+Commandes : pour stocker les commandes passées.
 - id_commande (clé primaire)
 - id_utilisateur (clé étrangère vers utilisateurs)
 - date_commande
 
-# Produits : pour stocker les informations sur les produits.
+Produits : pour stocker les informations sur les produits.
 - id_produit (clé primaire)
 - nom
 - description
 - prix
 
-# Ligne_commande : pour associer les produits aux commandes.
+Ligne_commande : pour associer les produits aux commandes.
 - id_ligne_commande (clé primaire)
 - id_commande (clé étrangère vers commandes)
 - id_produit (clé étrangère vers produits)
