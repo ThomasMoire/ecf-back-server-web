@@ -40,7 +40,7 @@ INSERT INTO carte ( nom, description ) VALUES (
 
 5. Ecrire la requête SQL qui permet de récupérer tout les produits d'une commande en fonction de l'id d'un utilisateur.
 ```sql
-SELECT p.id_produit, p.nom, p.description, p.prix, lcquantite
+SELECT p.id_produit, p.nom, p.description, p.prix, lc.quantite
 FROM utilisateurs u
 JOIN commandes c ON u.id_utilisateur = c.id_utilisateur
 JOIN ligne_commande lc ON c.id_commande = lc.id_commande
